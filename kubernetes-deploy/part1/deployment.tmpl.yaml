@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{app_name}}
+  namespace: ctdeploytest
+  labels:
+    app: {{app_name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{app_name}}
+  template:
+    metadata:
+      labels:
+        app: {{app_name}}
+    spec:
+      containers:
+        - name: {{image_name}}
+          image: {{image_name}}:{{image_version}}
+          ports:
+            - containerPort: {{app_port}}
