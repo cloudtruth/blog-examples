@@ -13,9 +13,8 @@ provider "aws" {
 }
 
 resource "aws_instance" "cloudtruth" {
-  ami           = var.ami
-  instance_type = var.instance_type 
+  ami               = var.ami
+  instance_type     = var.instance_type 
   availability_zone = var.availability_zone_names[0]
-
-  tags = var.resource_tags
+  tags              = var.resource_tags
 }
