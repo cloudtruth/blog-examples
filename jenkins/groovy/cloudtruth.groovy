@@ -1,17 +1,22 @@
 pipeline {
     environment {
         CLOUDTRUTH_API_KEY = credentials('CLOUDTRUTH_API_KEY')
-        CLOUDTRUTH_PARAMETER = sh(script:'cloudtruth --project Demo --env default parameters get pill', returnStdout: true).trim()
-
     }
     agent any
 
     stages {
         stage('CloudTruth') {
             steps {
-                echo "Retrieve Parameter from CloudTruth: ${env.CLOUDTRUTH_PARAMETER}"
-                sh "cloudtruth --project Demo parameters ls -v -s"
-                }
+            script{
+                CLOUDTRUTH_SECRET = sh(script:'cloudtruth --project MyFirstProject --env default parameters get secret', returnStdout: true).trim()
+                wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: CLOUDTRUTH_SECRET]]]) {  
+                  withEnv(["SECRET=${CLOUDTRUTH_SECRET}"]){
+                  sh 'echo Retrieve Secret from CloudTruth: $SECRET'
+                  sh 'printenv'
             }
+          }
         }
+      }
     }
+  }
+}
