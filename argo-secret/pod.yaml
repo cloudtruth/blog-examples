@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cloudtruth-secret-pod
+spec:
+  containers:
+  - name: cloudtruth-secret-pod
+    image: redis
+    volumeMounts:
+    - name: secret-volume
+      mountPath: "/etc/secrets"
+      readOnly: true
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: secret-basic-auth
