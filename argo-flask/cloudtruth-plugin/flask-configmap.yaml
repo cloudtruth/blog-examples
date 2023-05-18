@@ -1,8 +1,10 @@
-kind: ConfigMap 
 apiVersion: v1 
+kind: ConfigMap 
 metadata:
   name: flask-map
   namespace: default
+  labels:
+    app: flask-app
 data:
    FLASK_APP: "<FLASK_APP>"
    FLASK_ENV: "<FLASK_ENV>"
