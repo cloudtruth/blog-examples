@@ -1,0 +1,14 @@
+apiVersion: v1 
+kind: ConfigMap 
+metadata:
+  name: flask-map
+  namespace: default
+  labels:
+    app: flask-app
+data:
+   FLASK_APP: "<FLASK_APP>"
+   FLASK_ENV: "<FLASK_ENV>"
+   FLASK_MESSAGE: "<FLASK_MESSAGE>"
+   FLASK_RUN_HOST: "<FLASK_RUN_HOST>"
+   FLASK_RUN_PORT: "<FLASK_RUN_PORT>"
+   IMAGE: "<IMAGE>"
