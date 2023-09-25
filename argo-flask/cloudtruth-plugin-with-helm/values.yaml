@@ -1,0 +1,10 @@
+---
+configMap:
+  flask:
+    app: "<FLASK_APP>"
+    env: "<FLASK_ENV>"
+    message: "<FLASK_MESSAGE>"
+    run:
+      host: "<FLASK_RUN_HOST>"
+      port: "<FLASK_RUN_PORT>"
+    image: "<IMAGE>"

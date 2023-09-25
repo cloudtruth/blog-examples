@@ -1,0 +1,4 @@
+---
+apiVersion: v2
+name: cloudtruth-flask-with-helm
+version: 1.0.0
